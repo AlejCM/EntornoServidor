@@ -1,0 +1,18 @@
+table.tabla-bonita{
+    text-align: center;
+    background-color: aquamarine;
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 30%;
+}
+th{
+    background-color: aqua;
+}
+th,td{
+    border: 1px solid black;
+    
+}
+caption{
+    background-color: lightseagreen;
+    border: 1px solid black;
+}
