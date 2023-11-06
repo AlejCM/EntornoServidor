@@ -16,6 +16,14 @@
         $temp_id = depurar($_POST["id"]);
         $temp_pegi = depurar($_POST["pegi"]);
         $temp_compania = depurar($_POST["compania"]);
+
+        $nombre_fichero = $_FILES["imagen"]["name"];
+        $ruta_temporal = $_FILES["imagen"]["tmp_name"];
+        $ruta = "imagenes/".$nombre_fichero;
+
+        move_uploaded_file($ruta_temporal, $ruta);
+        echo $nombre_fichero;   #Devuelve el nombre del fichero
+
         
         if (strlen($temp_titulo) == 0){
             $err_titulo = "El titulo es obligatorio";
@@ -63,7 +71,7 @@
     }
     ?>
     <h1>Nuevo Juego</h1>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data"><!-- Se añade cuando metes imagenes -->
         <div class="mb-3">
             <label class="form-label">Titulo</label>
             <input class="form-control" type="text" name="titulo">
@@ -89,6 +97,11 @@
         <div class="mb-3">
             <label class="form-label">Compañia</label>
             <input class="form-control" type="text" name="compania">
+            <?php if(isset($err_compania)) echo $err_compania ?>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Imagen</label>
+            <input class="form-control" type="file" name="imagen">
             <?php if(isset($err_compania)) echo $err_compania ?>
         </div>
         <input class="btn btn-primary" type="submit" value="Enviar">
