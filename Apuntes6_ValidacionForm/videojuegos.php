@@ -19,6 +19,7 @@
 
         $nombre_fichero = $_FILES["imagen"]["name"];
         $ruta_temporal = $_FILES["imagen"]["tmp_name"];
+        $formato = $_FILES["imagen"]["type"];
         $ruta = "imagenes/".$nombre_fichero;
 
         move_uploaded_file($ruta_temporal, $ruta);
@@ -114,7 +115,7 @@
         echo "<h2>$compania</h2>";
 
         $sql = "INSERT INTO videojuegos (id_videojuego, titulo, pegi, compania)
-            VALUES ('$id', '$titulo', '$pegi', '$compania')";
+            VALUES ('$id', '$titulo', '$pegi', '$compania', '$ruta')";
         
         $conexion -> query($sql);
     } 

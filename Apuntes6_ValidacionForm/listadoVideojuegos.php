@@ -20,6 +20,7 @@
                 <th>Titulo</th>
                 <th>Pegi</th>
                 <th>Compañia</th>
+                <th>Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,9 @@
                     echo "<td>" . $fila["titulo"] . "</td>";
                     echo "<td>" . $fila["pegi"] . "</td>";
                     echo "<td>" . $fila["compania"] . "</td>";
+                    ?>
+                    <td><img src="<?php echo $fila["imagen"] ?>" alt=""></td>
+                    <?php
                     echo "</tr>";
                 }
             ?>
