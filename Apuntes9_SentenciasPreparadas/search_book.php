@@ -10,10 +10,10 @@
 <body>
     <?php
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $busqueda = "%" . $_POST["buscar"] . "%";
+            $busqueda = $_POST["buscar"];
 
             // Aqui es _conexion por como esta en db_libros
-            $sql = $_conexion -> prepare("SELECT * FROM libros WHERE titulo LIKE ?;");
+            $sql = $_conexion -> prepare("SELECT * FROM libros WHERE titulo LIKE CONCAT('%', ?, '%');");
             $sql -> bind_param("s", $busqueda);
             $sql -> execute();
             $resultado = $sql -> get_result();
@@ -21,6 +21,7 @@
     ?>
 
     <div class="container mt-3">
+        <h1>Busqueda</h1>
         <table class="table table-dark">
             <thead>
                 <tr>
