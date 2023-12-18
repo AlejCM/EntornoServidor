@@ -16,25 +16,33 @@
         }
     ?>
     <div class="container mt-3">
-        <h1>Libros</h1>
+        <div class="row mb-3 align-items-center">
+            <div class="col">
+                <h1 class="col">Libros</h1>
+            </div>
+            <div class="col">
+                <a class="btn btn-primary col" href="create_books.php">Crear Libros</a>
+            </div>
+        </div>
         <form action="" method="POST">
             <div class="row mb-3">
-                <div class="col-6">
+                <div class="col">
                     <input class="form-control" type="text" name="buscar">
                 </div>
-                <div class="col-2">
+                <div class="col">
                     <input class="btn btn-dark" type="submit" value="Buscar">
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-4">
+            <div class="row mb-3 align-items-center">
+                <div class="col-1">Ordenar:</div>
+                <div class="col-3">
                     <select class="form-select" name="categoria" id="categoria">
                         <option value="titulo" selected>Título</option>
                         <option value="autor">Autor</option>
                         <option value="paginas">Páginas</option>
                     </select>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <select class="form-select" name="orden" id="orden">
                         <option value="asc" selected>Ascendente</option>
                         <option value="desc">Descendente</option>
@@ -62,7 +70,8 @@
                     <th>Título</th>
                     <th>Páginas</th>
                     <th>Autor</th>
-                    <th>Visitar</th>
+                    <th>Ver</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -77,6 +86,12 @@
                                     <form action="view_book.php" method="POST">
                                         <input type="hidden" name="id" value="<?php echo $libro["titulo"] ?>">
                                         <input class="btn btn-secondary" type="submit" value="Ver">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="delete_book.php" method="POST">
+                                        <input type="hidden" name="id" value="<?php echo $libro["titulo"] ?>">
+                                        <input class="btn btn-danger" type="submit" value="Eliminar">
                                     </form>
                                 </td>
                             </tr>

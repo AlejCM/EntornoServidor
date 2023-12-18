@@ -21,7 +21,6 @@
         }
     ?>
 
-
     <div class="container">
         <h1>Crear Libro</h1>
         <form action="" method="POST">
@@ -37,8 +36,13 @@
                 <label class="form-label">Autor/a</label>
                 <input class="form-control" type="text" name="autor">
             </div>
-            <div class="mb-3">
-                <input class="btn btn-primary" type="submit" value="Crear">
+            <div class="row mb-3">
+                <div class="col-1">
+                    <input class="btn btn-primary" type="submit" value="Crear">
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-primary" href="index.php">Volver</a>
+                </div>
             </div>
         </form>
     </div>

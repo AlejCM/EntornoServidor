@@ -9,11 +9,25 @@
 </head>
 <body>
     <?php
-        if(!isset($_POST["id"])) header('location: index.php');
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $id = $_POST["id"];
+        //Entra cuando se edita
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])){
+            $titulo = $_POST["titulo"];
+            $paginas = (int) $_POST["paginas"];
+            $autor = $_POST["autor"];
+            $tAntiguo = $_POST["tAntiguo"];
+
+            $sql = $_conexion -> prepare("UPDATE libros SET titulo = ?, paginas = ?, autor = ?
+                WHERE titulo = ?;");
+            $sql -> bind_param("siss", $titulo, $paginas, $autor, $tAntiguo);
+            $sql -> execute();
         }
-        if (isset($id)){
+
+        //Coge esta salida si entra sin el id y cuando hace el submit no hay id y se va
+        if(!isset($_POST["id"])) header('location: index.php');
+
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])){
+            $id = $_POST["id"];
+
             $sql = $_conexion -> prepare("SELECT * FROM libros WHERE titulo = ?;");
             $sql -> bind_param("s", $id);
             $sql -> execute();
@@ -21,22 +35,8 @@
             $_conexion -> close();
             $libro = $resultado ->fetch_assoc();
         }
-
-        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])){
-            $titulo = $_POST["titulo"];
-            $paginas = (int) $_POST["paginas"];
-            $autor = $_POST["autor"];
-
-            // Aqui es _conexion por como esta en db_libros
-            $sql = $_conexion -> prepare("UPDATE libros SET titulo = ?, paginas = ?, autor = ?
-                WHERE titulo = ?;");
-            $sql -> bind_param("siss", $titulo, $paginas, $autor, $id);
-            $sql -> execute();
-        }
     ?>
-
-    <!-- EDITAR EL FORMULARIO -->
-
+    
     <div class="container">
         <h1>Crear Libro</h1>
         <form action="" method="POST">
@@ -52,9 +52,15 @@
                 <label class="form-label">Autor/a</label>
                 <input class="form-control" type="text" name="autor" value="<?php echo $libro["autor"] ?>">
             </div>
-            <div class="mb-3">
-                <input type="hidden" name="edit" value="edit">
-                <input class="btn btn-primary" type="submit" value="Editar">
+            <div class="row mb-3">
+                <div class="col-1">
+                    <input type="hidden" name="tAntiguo" value="<?php echo $id ?>">
+                    <input type="hidden" name="edit" value="edit">
+                    <input class="btn btn-primary" type="submit" value="Editar">
+                </div>
+                <div class="col-1">
+                    <a class="btn btn-primary" href="index.php">Volver</a>
+                </div>
             </div>
         </form>
     </div>
