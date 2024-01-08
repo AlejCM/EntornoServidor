@@ -1,0 +1,14 @@
+-Primero https://laravel.com/
+-despues get started
+-En creating a laravel project pincha composer
+-descarga y ejecuta pinchando en el segundo 
+que dice cosas sobre php
+resto next
+-despues crea la carpeta que quieras
+-metete en xammp php
+-cambia php.ini y descomenta el zip
+-usa el comando de la pagina del laravel
+composer create-project laravel/laravel example-app
+-en la carpeta que crea el comando metete por cmd
+-haz php artisan serve
+-se abre el servidor localhost:8000
