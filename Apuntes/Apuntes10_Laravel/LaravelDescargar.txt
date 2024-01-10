@@ -12,3 +12,68 @@ composer create-project laravel/laravel example-app
 -en la carpeta que crea el comando metete por cmd
 -haz php artisan serve
 -se abre el servidor localhost:8000
+
+
+-Para añadir controladores metete en cmd
+-php artisan make:controller SerieController
+--> se crea en app http controllers
+
+
+-mete la extension blade, la primera que salga
+
+
+-php artisan make:controller SerieController --resource
+    crea una plantilla en la que trabajar. Es otra opcion al comando de 
+    arriba
+
+-hacer php artisan route:list
+    enseña la lista de rutas que se han creado
+
+
+-Creamos el schema en base de datos
+-en .env cambiamos DB_DATABASE y DB_PASSWORD
+
+--------OBJETOS SOLO EN SINGULAR---------
+-Para crear objetos hacemos php artisan make:Model Serie -m
+    Se crean en app models
+
+-En database migrations quitale la fecha a create series
+    y añade las columnas de la tabla
+
+-php artisan migrate 
+    es para ejecutar el fichero
+
+-php artisan make:seeder SerieSeeder
+    precarga la tabla con datos de ejemplo
+    metemos valores en el seeder
+        DB::table('series')->insert([
+            ['titulo'=>"La casa de papel", 'plataforma'=>"Netflix", 'temporadas'=>5],
+            ['titulo'=>"Suits", 'plataforma'=>"Amazon Prime", 'temporadas'=>3],
+            ['titulo'=>"Como conoci a vuestra madre", 'plataforma'=>"Netflix", 'temporadas'=>10],
+            ['titulo'=>"El plan del diablo", 'plataforma'=>"HBO", 'temporadas'=>4]
+        ]);
+
+-En SerieSeeder acuerdate de poner use DB;
+
+-En DatabaseSeeder llamamos a SerieSeeder
+    $this->call([
+        SerieSeeder::class
+    ]);
+
+-php artisan db:seed 
+    te crea la tabla con los datos del seed y puedes hacer selects ya en workbench
+
+-En el controller para usar la base de datos añade  
+    use App\Models\Serie;
+    $series = Serie::all();
+
+-Como hemos cambiado a objetos hay que cambiar en el index como llamamos a los valores
+    <td>{{ $serie->titulo }}</td>
+    <td>{{ $serie->plataforma }}</td>
+    <td>{{ $serie->temporadas }}</td>
+
+
+-SI HUBIESE FALLOS EN LA BASE DE DATOS  
+    php artisan migrate:reset borras toda la base de datos
+    php artisan migrate La vuelve a crear
+    php artisan db:seed La llena de datos

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SerieController;
+use App\Http\Controllers\TemporadaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,8 @@ Route::get('/adios', function () {
     return view('adios');
 });
 
-Route::get('/series', function () {
-    return view('series/index');
-});
+//Route::get('/series', [SerieController::class, 'index']);
+Route::resource('/series', SerieController::class);
+
+//Route::get('/temporadas', [TemporadaController::class, 'index']);
+Route::resource('/temporadas', TemporadaController::class);
