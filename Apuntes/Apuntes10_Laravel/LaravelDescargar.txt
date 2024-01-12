@@ -80,7 +80,7 @@ composer create-project laravel/laravel example-app
 
 CUIDADO SI HACES VARIOS SEED SIN BORRAR SE TE DUPLICAN LOS DATOS 
 
----------------------------------------------------Formularios
+---------------------------------------------------Formulario Creacion--------------------------------------------
 Cuando creamos formularios hay que poner dentro @csrf
 En el controller ponemos en el create un view que te lleve a create.blade.php
 
@@ -98,3 +98,49 @@ Despues nos metemos en el controller y en store ponemos
     return redirect('/series');
 
 El save crea el objeto directamente en la base de datos y si queremos redireccionamos a otro lado
+
+
+Para buscar la serie con un id especifico 
+En el controller, en show ponemos
+    $serie = Serie::find($id);
+    return view('series/show', ['serie'=>$serie]);
+
+Cuando pongamos en la url series/un id se va a lanzar directamente show
+Que hemos creado para enseñar el resultado del select con id=id
+
+
+
+Si queremos editar la serie en el controller en edit ponemos 
+    $serie = Serie::find($id);
+    return view('series/edit', ['serie'=>$serie]);
+
+ej de url series/3/edit
+
+Despues copiamos el formulario de create.blade.php y lo pegamos en edit.blade.php
+Con la diferencia que hay que poner {{ method_field('PUT') }} en el formulario 
+porque solo se accede a traves de PUT pero html no deja poner PUT solo POST y GET
+Y en el action ponemos {{route('series.update', ['series' => $serie -> id]) }}
+ATENCION EL PRIMER VALOR EN LOS [] ES LO QUE PONE EN EL ROUTE:LIST, EN SERIES ES SERIES Y EN TEMPORADAS ES TEMPORADA
+
+Tambien para que se vea el valor antiguo lo ponemos en value en cada input para editar 
+    mas facilmente
+
+Para el update habria que hacer 
+    $serie = Serie::find($id);
+    $serie -> titulo = $request -> input('titulo');
+    $serie -> plataforma = $request -> input('plataforma');
+    $serie -> temporadas = $request -> input('temporadas');
+    $serie -> save();
+
+    return redirect('/series');
+
+Si quieres añadir un boton en index para ver un dato concreto abrimos un formulario por dato asi 
+    <form action="{{ route('series.show', ['series' => $serie -> id]) }}" method="GET">
+            <input type="submit" value="Ver">
+    </form>
+
+
+Para eliminar un dato tenemos que poner {{ method_field('DELETE') }} en el formulario que llama a destroy
+Despues en el controller en destroy hacemos
+    DB::table('series')->where('id', "=", $id)->delete();
+    return redirect('/series');

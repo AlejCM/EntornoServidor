@@ -14,6 +14,9 @@
             <th>Indice Temporada</th>
             <th>Titulo Temporada</th>
             <th>Capitulos</th>
+            <th>Ver</th>
+            <th>Editar</th>
+            <th>Borrar</th>
         </tr>
         @foreach ($temporadas as $temporada)
             <tr>
@@ -21,6 +24,23 @@
                 <td>{{ $temporada->id_temporada }}</td>
                 <td>{{ $temporada->titulo }}</td>
                 <td>{{ $temporada->capitulos }}</td>
+                <td>
+                    <form action="{{ route('temporadas.show', ['temporada' => $temporada -> id]) }}" method="GET">
+                        <input type="submit" value="Ver">
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ route('temporadas.edit', ['temporada' => $temporada -> id]) }}" method="GET">
+                        <input type="submit" value="Ver">
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ route('temporadas.destroy', ['temporada' => $temporada -> id]) }}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <input type="submit" value="Borrar">
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

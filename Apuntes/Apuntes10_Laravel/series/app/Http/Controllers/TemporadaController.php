@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Temporada;
+use DB;
 
 class TemporadaController extends Controller
 {
@@ -31,7 +32,7 @@ class TemporadaController extends Controller
      */
     public function create()
     {
-        //
+        return view('temporadas/create');
     }
 
     /**
@@ -39,7 +40,14 @@ class TemporadaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $temporada = new Temporada;
+        $temporada -> nombre = $request -> input('nombre');
+        $temporada -> id_temporada = $request -> input('id_temporada');
+        $temporada -> titulo = $request -> input('titulo');
+        $temporada -> capitulos = $request -> input('capitulos');
+        $temporada -> save();
+
+        return redirect('/temporadas');
     }
 
     /**
@@ -47,7 +55,8 @@ class TemporadaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $temporada = Temporada::find($id);
+        return view('temporadas/show', ['temporada'=>$temporada]);
     }
 
     /**
@@ -55,7 +64,8 @@ class TemporadaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $temporada = Temporada::find($id);
+        return view('temporadas/edit', ['temporada'=>$temporada]);
     }
 
     /**
@@ -63,7 +73,14 @@ class TemporadaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $temporada = Temporada::find($id);
+        $temporada -> nombre = $request -> input('nombre');
+        $temporada -> id_temporada = $request -> input('id_temporada');
+        $temporada -> titulo = $request -> input('titulo');
+        $temporada -> capitulos = $request -> input('capitulos');
+        $temporada -> save();
+
+        return redirect('/temporadas');
     }
 
     /**
@@ -71,6 +88,7 @@ class TemporadaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('temporadas')->where('id', "=", $id)->delete();
+        return redirect('/temporadas');
     }
 }
