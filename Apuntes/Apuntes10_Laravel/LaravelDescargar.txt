@@ -77,3 +77,24 @@ composer create-project laravel/laravel example-app
     php artisan migrate:reset borras toda la base de datos
     php artisan migrate La vuelve a crear
     php artisan db:seed La llena de datos
+
+CUIDADO SI HACES VARIOS SEED SIN BORRAR SE TE DUPLICAN LOS DATOS 
+
+---------------------------------------------------Formularios
+Cuando creamos formularios hay que poner dentro @csrf
+En el controller ponemos en el create un view que te lleve a create.blade.php
+
+en cmd hacemos php artisan route:list
+Mirmaos el POST de series y vemos como se llama en este caso series.store 
+y ponemos en el action del formulario "{{ route('series.store' )}}"
+
+Despues nos metemos en el controller y en store ponemos
+    $serie = new Serie;
+    $serie -> titulo = $request -> input('titulo');
+    $serie -> plataforma = $request -> input('plataforma');
+    $serie -> temporadas = $request -> input('temporadas');
+    $serie -> save();
+
+    return redirect('/series');
+
+El save crea el objeto directamente en la base de datos y si queremos redireccionamos a otro lado

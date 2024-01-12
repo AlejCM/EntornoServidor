@@ -31,7 +31,7 @@ class SerieController extends Controller
      */
     public function create()
     {
-        //
+        return view('series/create');
     }
 
     /**
@@ -39,7 +39,13 @@ class SerieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $serie = new Serie;
+        $serie -> titulo = $request -> input('titulo');
+        $serie -> plataforma = $request -> input('plataforma');
+        $serie -> temporadas = $request -> input('temporadas');
+        $serie -> save();
+
+        return redirect('/series');
     }
 
     /**
