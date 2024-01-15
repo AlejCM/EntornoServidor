@@ -15,7 +15,7 @@
         <label>Plataforma</label>
         <input type="text" name="plataforma" value="{{ $serie -> plataforma }}"><br><br>
         <label>Temporadas</label>
-        <input type="text" name="temporadas" value="{{ $serie -> temporadas }}"><br><br>
+        <input type="text" name="num_temporadas" value="{{ $serie -> num_temporadas }}"><br><br>
         <input type="submit" value="Editar">
     </form>
 </body>

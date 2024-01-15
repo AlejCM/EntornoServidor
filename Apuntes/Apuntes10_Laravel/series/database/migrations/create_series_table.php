@@ -16,7 +16,7 @@ return new class extends Migration
             // Generamos columnas
             $table->string('titulo');
             $table->string('plataforma');
-            $table->integer('temporadas');
+            $table->integer('num_temporadas');
             $table->timestamps();
         });
     }

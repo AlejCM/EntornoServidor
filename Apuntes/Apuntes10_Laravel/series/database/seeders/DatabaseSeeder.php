@@ -13,9 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            SerieSeeder::class
-        ]);
-        $this->call([
+            SerieSeeder::class,
             TemporadaSeeder::class
         ]);
     }

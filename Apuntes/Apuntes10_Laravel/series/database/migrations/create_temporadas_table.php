@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('temporadas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->unsignedBigInteger('serie_id');
+            $table->foreign('serie_id')->references('id')->on('series');
             $table->integer('id_temporada');
             $table->string('titulo');
             $table->integer('capitulos');

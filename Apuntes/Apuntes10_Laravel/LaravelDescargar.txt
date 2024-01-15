@@ -144,3 +144,40 @@ Para eliminar un dato tenemos que poner {{ method_field('DELETE') }} en el formu
 Despues en el controller en destroy hacemos
     DB::table('series')->where('id', "=", $id)->delete();
     return redirect('/series');
+
+
+En nuestro caso el nombre de la serie es foreign key en temporadas
+Cuando hay una relacion y hay que poner claves foraneas hay que poner en el N del 1-N
+unsignedBigInteger('serie_id');
+$table -> foreign('serie_id')->references('id')->on('series');
+
+Ahora que hemos cambiado el nombre de la serie en temporada por id cambiamos en el seeder los nombres por los ids
+
+ATENCION en database seeder tiene que estar primero el 1 y despues el N
+
+Despues de haber cambiado lo necesario reseteamos las migraciones con
+    php artisan migrate:reset borras toda la base de datos
+    php artisan migrate La vuelve a crear
+    php artisan db:seed La llena de datos
+
+
+
+en app models Serie añadimos para decir que es relacion 1-N porque una serie tiene varias temporadas
+public function temporadas()
+    {
+        return $this->hasMany(Temporada::class);
+    }
+
+y en serie hay que hacer el doble sentido poniendo 
+public function serie() 
+    {
+        return $this->BelongsTo(Serie::class);
+    }
+
+
+podemos llamar al titulo de la serie desde objetos con
+    $temporada->serie->titulo
+
+
+Si queremos hacer que al ver cada serie se vean sus temporadas
+entonces en el show de series

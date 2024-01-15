@@ -14,7 +14,7 @@
         <label>Plataforma</label>
         <input type="text" name="plataforma"><br><br>
         <label>Temporadas</label>
-        <input type="text" name="temporadas"><br><br>
+        <input type="text" name="num_temporadas"><br><br>
         <input type="submit" value="Crear">
     </form>
 </body>

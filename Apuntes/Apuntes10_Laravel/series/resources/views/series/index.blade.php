@@ -27,7 +27,7 @@
                 --}}
                 <td>{{ $serie->titulo }}</td>
                 <td>{{ $serie->plataforma }}</td>
-                <td>{{ $serie->temporadas }}</td>
+                <td>{{ $serie->num_temporadas }}</td>
                 <td>
                     <form action="{{ route('series.show', ['series' => $serie -> id]) }}" method="GET">
                         <input type="submit" value="Ver">

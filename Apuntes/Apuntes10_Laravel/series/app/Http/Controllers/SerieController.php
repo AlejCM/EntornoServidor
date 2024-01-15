@@ -43,7 +43,7 @@ class SerieController extends Controller
         $serie = new Serie;
         $serie -> titulo = $request -> input('titulo');
         $serie -> plataforma = $request -> input('plataforma');
-        $serie -> temporadas = $request -> input('temporadas');
+        $serie -> num_temporadas = $request -> input('num_temporadas');
         $serie -> save();
 
         return redirect('/series');
@@ -75,7 +75,7 @@ class SerieController extends Controller
         $serie = Serie::find($id);
         $serie -> titulo = $request -> input('titulo');
         $serie -> plataforma = $request -> input('plataforma');
-        $serie -> temporadas = $request -> input('temporadas');
+        $serie -> num_temporadas = $request -> input('num_temporadas');
         $serie -> save();
 
         return redirect('/series');

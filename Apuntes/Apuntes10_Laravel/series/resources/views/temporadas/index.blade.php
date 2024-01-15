@@ -10,9 +10,9 @@
     <p>{{ $mensaje }}</p> 
     <table>
         <tr>
-            <th>Nombre</th>
-            <th>Indice Temporada</th>
-            <th>Titulo Temporada</th>
+            <th>Serie</th>
+            <th>numero Temp</th>
+            <th>Titulo Temp</th>
             <th>Capitulos</th>
             <th>Ver</th>
             <th>Editar</th>
@@ -20,7 +20,7 @@
         </tr>
         @foreach ($temporadas as $temporada)
             <tr>
-                <td>{{ $temporada->nombre }}</td>
+                <td>{{ $temporada->serie->titulo }}</td>
                 <td>{{ $temporada->id_temporada }}</td>
                 <td>{{ $temporada->titulo }}</td>
                 <td>{{ $temporada->capitulos }}</td>

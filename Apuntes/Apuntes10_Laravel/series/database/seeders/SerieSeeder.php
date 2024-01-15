@@ -16,16 +16,16 @@ class SerieSeeder extends Seeder
         DB::table('series')->insert([
             ['titulo'=>"La casa de papel", 
             'plataforma'=>"Netflix", 
-            'temporadas'=>5],
+            'num_temporadas'=>5],
             ['titulo'=>"Suits", 
             'plataforma'=>"Amazon Prime", 
-            'temporadas'=>3],
+            'num_temporadas'=>3],
             ['titulo'=>"Como conoci a vuestra madre", 
             'plataforma'=>"Netflix", 
-            'temporadas'=>10],
+            'num_temporadas'=>10],
             ['titulo'=>"El plan del diablo", 
             'plataforma'=>"HBO", 
-            'temporadas'=>4]
+            'num_temporadas'=>4]
         ]);
     }
 }

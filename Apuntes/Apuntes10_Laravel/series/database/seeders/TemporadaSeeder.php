@@ -14,19 +14,19 @@ class TemporadaSeeder extends Seeder
     public function run(): void
     {
         DB::table('temporadas')->insert([
-            ['nombre'=>"La casa de papel", 
+            ['serie_id'=>1, 
             'id_temporada'=>1, 
             'titulo'=>"Primera Temporada", 
             'capitulos'=>8],
-            ['nombre'=>"Suits", 
+            ['serie_id'=>2, 
             'id_temporada'=>2, 
             'titulo'=>"Segunda Temporada", 
             'capitulos'=>20],
-            ['nombre'=>"Como conoci a vuestra madre", 
+            ['serie_id'=>3, 
             'id_temporada'=>4, 
             'titulo'=>"Cuarta Temporada", 
             'capitulos'=>15],
-            ['nombre'=>"Friends", 
+            ['serie_id'=>4, 
             'id_temporada'=>1, 
             'titulo'=>"Primera Temporada", 
             'capitulos'=>12]
