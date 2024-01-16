@@ -7,13 +7,26 @@ resto next
 -despues crea la carpeta que quieras
 -metete en xammp php
 -cambia php.ini y descomenta el zip
+
+-----Si es uno ya creado que te bajas de git-----
+-Hacer:
+composer install
+npm install
+-Crea .env en la carpeta series y copia y pega .env.example
+-Cambia en .env 
+DB_DATABASE=db_series
+DB_USERNAME=root
+DB_PASSWORD=medac
+-Haz php artisan key:generate
+
+-----Si lo acabas de crear-----
 -usa el comando de la pagina del laravel
 composer create-project laravel/laravel example-app
 -en la carpeta que crea el comando metete por cmd
 -haz php artisan serve
 -se abre el servidor localhost:8000
 
-
+-----Seguimos con los pasos de manera normal-----
 -Para añadir controladores metete en cmd
 -php artisan make:controller SerieController
 --> se crea en app http controllers
