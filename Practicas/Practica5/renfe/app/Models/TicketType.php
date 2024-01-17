@@ -9,7 +9,7 @@ class TicketType extends Model
 {
     use HasFactory;
 
-    public function Tickets()
+    public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }

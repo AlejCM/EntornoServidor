@@ -15,13 +15,13 @@ class TicketTypeSeeder extends Seeder
     {
         DB::table("ticket_types")->insert([
             [
-                "type_ticket" => "Billete sencillo"
+                "type" => "Billete sencillo"
             ],
             [
-                "type_ticket" => "Abono mensual"
+                "type" => "Abono mensual"
             ],
             [
-                "type_ticket" => "Abono trimestral"
+                "type" => "Abono trimestral"
             ]
         ]);
     }

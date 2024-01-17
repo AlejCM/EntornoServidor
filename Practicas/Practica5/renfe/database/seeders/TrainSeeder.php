@@ -18,19 +18,19 @@ class TrainSeeder extends Seeder
                 "name" => "Cercanias01",
                 "passengers" => 200,
                 "year" => 2020,
-                "trainType_id" => 1
+                "train_type_id" => 1
             ],
             [
                 "name" => "MD01",
                 "passengers" => 300,
                 "year" => 2022,
-                "trainType_id" => 2
+                "train_type_id" => 2
             ],
             [
                 "name" => "AVE01",
                 "passengers" => 450,
                 "year" => 2021,
-                "trainType_id" => 3
+                "train_type_id" => 3
             ]
         ]);
     }

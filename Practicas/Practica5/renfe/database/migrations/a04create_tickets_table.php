@@ -17,8 +17,8 @@ return new class extends Migration
             $table->double("price");
             $table->unsignedBigInteger("train_id");
             $table->foreign("train_id")->references("id")->on("trains");
-            $table->unsignedBigInteger("ticketType_id");
-            $table->foreign("ticketType_id")->references("id")->on("ticket_types");
+            $table->unsignedBigInteger("ticket_type_id");
+            $table->foreign("ticket_type_id")->references("id")->on("ticket_types");
             $table->timestamps();
         });
     }

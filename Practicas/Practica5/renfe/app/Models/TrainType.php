@@ -9,7 +9,7 @@ class TrainType extends Model
 {
     use HasFactory;
 
-    public function Trains()
+    public function trains()
     {
         return $this->hasMany(Train::class);
     }

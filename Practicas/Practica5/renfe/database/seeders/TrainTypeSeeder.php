@@ -15,13 +15,13 @@ class TrainTypeSeeder extends Seeder
     {
         DB::table("train_types")->insert([
             [
-                "type_train" => "Cercanias"
+                "type" => "Cercanias"
             ],
             [
-                "type_train" => "Media Distancia"
+                "type" => "Media Distancia"
             ],
             [
-                "type_train" => "Alta Velocidad"
+                "type" => "Alta Velocidad"
             ]
         ]);
     }

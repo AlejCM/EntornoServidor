@@ -9,12 +9,12 @@ class Train extends Model
 {
     use HasFactory;
 
-    public function TrainType()
+    public function trainType()
     {
         return $this->BelongsTo(TrainType::class);
     }
 
-    public function Tickets()
+    public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }

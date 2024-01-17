@@ -10,7 +10,6 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>Pasajeros</th>
                 <th>Año</th>
@@ -19,15 +18,15 @@
         </thead>
         <tbody>
             @foreach ($trains as $train)
-                <td>{{ $train->id }}</td>
+            <tr>
                 <td>{{ $train->name }}</td>
                 <td>{{ $train->passengers }}</td>
                 <td>{{ $train->year }}</td>
 
 
                 {{-- mirar el nombre del modelo que lo coge  --}}
-                <td>{{ $train->TrainType }}</td>
-
+                <td>{{ $train->trainType->type }}</td>
+            </tr>
             @endforeach
         </tbody>
     </table>
