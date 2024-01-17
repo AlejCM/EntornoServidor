@@ -32,7 +32,7 @@ composer create-project laravel/laravel example-app
 --> se crea en app http controllers
 
 
--mete la extension blade, la primera que salga
+-mete la extension en el Virtual Studio: blade, la primera que salga
 
 
 -php artisan make:controller SerieController --resource
@@ -72,6 +72,13 @@ composer create-project laravel/laravel example-app
     $this->call([
         SerieSeeder::class
     ]);
+
+
+-En routes Web hay que poner 
+Route::resource("/ruta", SerieController::class);
+y no olvidar 
+use App\Http\Controllers\SerieController;
+
 
 -php artisan db:seed 
     te crea la tabla con los datos del seed y puedes hacer selects ya en workbench
