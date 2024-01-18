@@ -1,3 +1,6 @@
 CREATE SCHEMA db_trains;
 USE db_trains;
-select * from train_types
+SELECT * FROM trains;
+SELECT * FROM train_types;
+SELECT * FROM tickets;
+SELECT * FROM ticket_types;
