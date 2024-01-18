@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Train;
+use App\Models\TrainType;
 use DB;
 
 class TrainController extends Controller
@@ -25,7 +26,11 @@ class TrainController extends Controller
      */
     public function create()
     {
-        //
+        $types = TrainType::all();
+
+        return view('trains/create', [
+            'types' => $types
+        ]);
     }
 
     /**
@@ -33,7 +38,14 @@ class TrainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $train = new Train;
+        $train -> name = $request -> input('name');
+        $train -> passengers = $request -> input('passengers');
+        $train -> year = $request -> input('year');
+        $train -> train_type_id = $request -> input('train_type_id');
+        $train -> save();
+
+        return redirect('/trains');
     }
 
     /**
