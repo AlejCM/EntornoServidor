@@ -6,15 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create Tickets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
 </head>
 <body>
+    <div class="indice">
+        <ul class="row justify-content-end">
+            <li class="col-1 mt-2"><a href="/trains">Trenes</a></li>
+            <li class="col-1 mt-2"><a href="/tickets">Tickets</a></li>
+            <li class="col-1 mt-2"><a href="/trainTypes">Tipos de Tren</a></li>
+            <li class="col-1 mt-2"><a href="/ticketTypes">Tipos de Ticket</a></li>
+        </ul>
+    </div>
     <div class="container mt-3">
         <h1>Crear Ticket</h1>
         <hr>
         <form action="{{ route('tickets.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label class="form-label">Dia</label>
+                <label class="form-label">Fecha</label>
                 <input class="form-control" type="date" name="date">
             </div>
             <div class="mb-3">

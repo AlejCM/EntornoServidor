@@ -1,0 +1,18 @@
+.indice{
+    height: 50px;
+    width: 100%;
+    background-color: black;
+}
+.indice ul{
+    list-style: none;
+    text-decoration: none;
+    margin-right: 0px;
+}
+.indice ul li{
+    align-items: center;
+    border-left: 1px solid grey;
+}
+a{
+    text-decoration: none;
+    color: white;
+}

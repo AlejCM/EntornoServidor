@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('temporadas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('serie_id');
-            $table->foreign('serie_id')->references('id')->on('series');
+            $table->foreign('serie_id')->references('id')->on('series')->onDelete('cascade');
             $table->integer('id_temporada');
             $table->string('titulo');
             $table->integer('capitulos');
