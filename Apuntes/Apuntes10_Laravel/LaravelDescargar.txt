@@ -201,3 +201,16 @@ podemos llamar al titulo de la serie desde objetos con
 
 Si queremos hacer que al ver cada serie se vean sus temporadas
 entonces en el show de series
+
+
+
+N-N HAY QUE HACER UN PAR DE COMANDOS
+PRIMERO CREA EL MODELO DE LOS DOS Y DESPUES HAZ ESTOS COMANDOS:
+    php artisan make:migration create_actor_film --create=actor_film
+    --Hay que poner los nombres en SINGULAR
+
+    el resto se va haciendo igual 
+    en el modelo se pondria 
+    public function actors(){
+        return $this->belongsToMany(Actor::class);
+    }
