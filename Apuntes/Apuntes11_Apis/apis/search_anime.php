@@ -31,6 +31,12 @@
                     <option value="<?php echo $i ?>"><?php echo $i ?></option>
             <?php } ?>
         </select>
+        <select name="ordenar" id="ordenar">
+            <option value="" selected>Sin Orden</option>
+            <option value="titulo">Titulo</option>
+            <option value="nota">Nota</option>
+            <option value="tituloynota">Titulo y Nota</option>
+        </select> <br><br>
         <input type="submit" value="Enviar">
     </form>
     <?php
@@ -45,6 +51,8 @@
             $limit = "limit=$limite";
             $min_score = "min_score=$notaMin";
             $max_score = "max_score=$notaMax";
+
+            $orden = $_POST["ordenar"];
             
             $apiUrl = "https://api.jikan.moe/v4/anime?$q&$limit&$min_score&$max_score";           
             
@@ -55,8 +63,22 @@
             curl_close($curl);
 
             $array = json_decode($respuesta, true);
-
             $animes = $array['data'];
+
+            if (isset($orden) && $orden != ""){
+                if ($orden == "titulo"){
+                    $titulo_orden = array_column($animes, "title");
+                    array_multisort($titulo_orden, SORT_ASC, $animes);
+                } else if ($orden == "nota"){
+                    $nota_orden = array_column($animes, "score");
+                    array_multisort($nota_orden, SORT_DESC, $animes);
+                } else{
+                    $nota_orden = array_column($animes, "score");
+                    $titulo_orden = array_column($animes, "title");
+                    array_multisort($nota_orden, SORT_DESC, $titulo_orden, SORT_ASC, $animes);
+                }
+            }
+
             foreach($animes as $anime){
                 $id = $anime['mal_id'];
                 $nombre = $anime['title'];
