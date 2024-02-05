@@ -1,0 +1,30 @@
+Node.js
+Express - Laravel
+EJS - Blade
+Embedded JavaScript
+MongoDB
+
+node archivo
+cada vez que hagas un cambio hay que cerrar 
+el servidor y volver a abrirlo
+
+npm install express
+
+
+
+npm install -g express generator
+
+meterme en la carpeta que quiera usarlo
+
+npx express-generator --view=ejs
+
+npm install 
+
+para arrglar fallos el comando que ponga
+
+npm start
+localhost:3000
+
+
+Descargar la extension 
+EJS language support
